@@ -66,7 +66,7 @@ export default class {
 		});
 	}
 
-	async getDBs() {
+	async getDBs(): Promise<string[]> {
 		this.socket.emit('getDBs');
 		return new Promise(resolve => {
 			this.socket.once('getDBs', m => {
@@ -75,7 +75,7 @@ export default class {
 		});
 	}
 
-	async getVersion() {
+	async getVersion(): Promise<string> {
 		this.socket.emit('getVersion');
 		return new Promise(resolve => {
 			this.socket.once('getVersion', m => {
