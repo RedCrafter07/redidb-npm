@@ -7,6 +7,9 @@ const db = new redidb('http://localhost:12018');
 	console.log('AUTHORIZED!');
 	const r1 = await db.createDatabase('testDB');
 	console.log(r1);
+	await db.add('testDB', {
+		msg: 'Test!',
+	});
 	const q = await db.query('testDB', {});
 	console.log(q);
 
@@ -14,4 +17,9 @@ const db = new redidb('http://localhost:12018');
 
 	const q2 = await db.query('testDB', {});
 	console.log(q2);
+
+	const v = await db.getVersion();
+	const dbs = await db.getDBs();
+
+	console.log(v, dbs);
 })();

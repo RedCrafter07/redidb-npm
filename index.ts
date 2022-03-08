@@ -65,4 +65,22 @@ export default class {
 			});
 		});
 	}
+
+	async getDBs() {
+		this.socket.emit('getDBs');
+		return new Promise(resolve => {
+			this.socket.once('getDBs', m => {
+				resolve(m);
+			});
+		});
+	}
+
+	async getVersion() {
+		this.socket.emit('getVersion');
+		return new Promise(resolve => {
+			this.socket.once('getVersion', m => {
+				resolve(m);
+			});
+		});
+	}
 }
